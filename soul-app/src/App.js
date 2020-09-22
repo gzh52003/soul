@@ -6,7 +6,7 @@ import { TabBar } from 'antd-mobile';
 @withRouter
 class App extends React.Component {
   state = {
-    selectedTab: '',
+    selectedTab: '/Home',
     hidden: false,
     fullScreen: true,
     TabBarList :[{
@@ -41,6 +41,12 @@ class App extends React.Component {
     })
     this.props.history.push(path)
   }
+  componentDidMount(){
+    console.log(this.props.location.pathname);
+    this.setState({
+      selectedTab:this.props.location.pathname
+    })
+  }
   render() {
     const {TabBarList} = this.state
     return (
@@ -61,13 +67,14 @@ class App extends React.Component {
               background: `url(${item.icon}) center center /  21px 21px no-repeat` }}
               />
             }
+            selected={this.state.selectedTab === item.path}
             selectedIcon={<div style={{
               width: '22px',
               height: '22px',
               background: `url(${item.active}) center center /  21px 21px no-repeat` }}
               />
             }
-            selected={this.state.selectedTab === item.path}
+            
             badge={1}
             onPress={() => {
              this.goto(item.path);
