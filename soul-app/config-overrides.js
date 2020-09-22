@@ -31,8 +31,8 @@ module.exports = override(
     addDecoratorsLegacy(), // 支持装饰器
     addWebpackAlias({
         '@': path.join(__dirname, 'src'), // D:\app\xx, /app/xxx
-        // '#': path.join(__dirname, 'src/components'),
-        // '~': path.join(__dirname, 'src/views')
+        '#': path.join(__dirname, 'src/components'),
+        '~': path.join(__dirname, 'src/views')
     }), // 添加路径别名
 
     // ui框架按需加载

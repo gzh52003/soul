@@ -1,19 +1,23 @@
-import React from 'react';
+import React,{Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import {routes} from './router'
+import {renderRoutes} from 'react-router-config'
 import {HashRouter,BrowserRouter} from 'react-router-dom'
 
-const Router = process.env.NODE_ENV === 'development' ? HashRouter : BrowserRouter;
+const Router = process.env.NODE_ENV === 'development' ?  HashRouter :BrowserRouter ;
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Router>
       <App />
-    </Router>
-  </React.StrictMode>,
+      <Suspense fallback={<div>loading</div>}>
+      {renderRoutes(routes)}
+      </Suspense>
+    </Router>,
+  //</React.StrictMode>,
   document.getElementById('root')
 );
 
