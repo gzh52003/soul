@@ -1,11 +1,10 @@
-
 const {
     MongoClient,
     ObjectId
 } = require('mongodb');
 
 const url = 'mongodb://localhost:27017';
-const dbname = 'shop';
+const dbname = 'soul';
 
 async function connect() {
     const client = await MongoClient.connect(url, {
@@ -173,5 +172,4 @@ module.exports = {
     insert,
     remove,
     updateById,
-
 }
