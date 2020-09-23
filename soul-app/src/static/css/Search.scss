@@ -1,0 +1,58 @@
+.Search-wrap{
+    padding:0 1.25rem;
+    background: #ffffff;
+    .Search{
+        width: 12.5rem;
+    }
+    .am-navbar-left{
+        width: 0.3125rem;
+        padding-left: 0;
+    }
+    
+    .am-navbar-right{
+        width: 0.3125rem;
+        margin-right: 0;
+    }
+    .am-search {
+        background: #ffffff;
+        .am-search-synthetic-ph{
+            background: #f7f7f7;
+            border-radius: 1.25rem;
+        }
+    }
+    .content{
+        padding-top: 0.625rem;
+        .placeholder {
+            background-color: #f7f7f7;
+            color: #bbb;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+          }
+        .history-title{
+            position: relative;
+            h5{
+                font-size:1rem;
+                float: left;
+                line-height: 1rem;
+                font-weight: normal;
+                color: #888888;
+            }
+            .icon-trash{
+                position: absolute;
+                top:1.875rem;
+                right: 0.625rem;
+                float: right;
+                width: 1rem;
+                height: 1rem;
+                img{
+                    height:100%;
+                    width: 100%;
+                    z-index:10;
+                }
+            }
+        }
+    }
+}
+
