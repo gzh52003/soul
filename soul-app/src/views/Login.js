@@ -38,13 +38,17 @@ export default class Login extends React.Component {
       value: ''
     });
   }
+  goback = () => {
+    this.setState({
+      inputPasswordShow: false,
+      value: this.state.userInfo[0].phoneNumber
+    })
+  }
   inputPassword = () => {
     const { userInfo, value, inputPasswordShow } = this.state
-    // console.log(value)
     this.setState({
       userInfo: [...userInfo, { password: value }]
     })
-    console.log(userInfo)
   }
   render() {
     const { disabled, inputPasswordShow } = this.state
@@ -61,7 +65,7 @@ export default class Login extends React.Component {
           background: "rgba(0,0,0,.7)"
         }}>
           {
-            inputPasswordShow ? <div >
+            inputPasswordShow ? <div onClick={this.goback}>
               <Icon type="left" style={{ position: 'absolute', left: '10px', top: '10px', color: '#25d4d0', width: '30px', display: 'inline-block' }} />
               <span style={{ position: 'absolute', left: '36px', top: '13px', color: '#25d4d0', width: '100px', display: 'inline-block' }}>返回上一级</span>
             </div> : ''
@@ -112,7 +116,12 @@ export default class Login extends React.Component {
               <Button onClick={this.inputPhoneNumber} disabled={disabled} type="primary" inline style={{ marginRight: '4px', backgroundColor: '#25d4d0' }}>确定</Button>
             </>
         }
-
+        {
+          inputPasswordShow ? '' : <footer className='foot'>登录注册即代表同意
+          <span>soul用户协议</span>和
+          <span>隐私政策</span>
+          </footer>
+        }
 
       </div>
     )

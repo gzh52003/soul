@@ -41,3 +41,13 @@
 .am-input-label{
   color: #25d4d0!important;
 }
+.foot{
+  position: absolute;
+  bottom: 10px;
+  left: 43px;
+  font-size: 14px;
+  color: #fff;
+}
+.foot span{
+  color: #25d4d0!important;
+}
