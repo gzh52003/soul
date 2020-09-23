@@ -2,7 +2,7 @@ import React,{Suspense} from 'react';
 import './App.css';
 import { withRouter,Switch } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
-
+import './static/css/common.scss'
 @withRouter
 class App extends React.Component {
   state = {
@@ -42,7 +42,6 @@ class App extends React.Component {
     this.props.history.push(path)
   }
   componentDidMount(){
-    console.log(this.props.location.pathname);
     this.setState({
       selectedTab:this.props.location.pathname
     })
