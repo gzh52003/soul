@@ -1,0 +1,10 @@
+.am-tab-bar-item{
+    position: relative;
+    z-index: -1;
+}
+.clear::after{
+    content:'';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
