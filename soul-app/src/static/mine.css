@@ -1,0 +1,22 @@
+
+.am-flexbox{
+  height: 80px;
+}
+.am-flexbox-item{
+  text-align: center;
+}
+.userInfo_wrap{
+  height: 44vh;
+  background-color: green;
+}
+.avator{
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.userInfo_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

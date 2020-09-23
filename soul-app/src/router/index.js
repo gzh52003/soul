@@ -4,6 +4,8 @@ import {lazy} from 'react'
 const Mine = lazy(()=>import('~/Mine'))
 const Chat = lazy(()=>import('~/Chat'))
 const Square = lazy(()=>import('~/Square'))
+const More = lazy(()=>import('~/More'))
+const Login = lazy(()=>import('~/Login'))
 import { Redirect } from 'react-router-dom'
 export const routes =[
     {
@@ -32,5 +34,11 @@ export const routes =[
     },{
         path:'/Mine',
         component:Mine
-    }
+    },{
+      path:'/More',
+      component:More
+  },{
+    path:'/Login',
+    component:Login
+},
 ]

@@ -9,6 +9,7 @@ class App extends React.Component {
     selectedTab: '',
     hidden: false,
     fullScreen: true,
+    show:true,
     TabBarList :[{
       name:'planet',
       title:'星球',
@@ -42,9 +43,14 @@ class App extends React.Component {
     this.props.history.push(path)
   }
   render() {
-    const {TabBarList} = this.state
-    return (
+    const {TabBarList,show} = this.state
+    const {location} = this.props
+    console.log('props',location.pathname)
+    
+    if(location.pathname!=='/Login'){
+      return (
       <>
+     
       <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: "100%" }}>
         <TabBar
           unselectedTintColor="#949494"
@@ -79,6 +85,10 @@ class App extends React.Component {
       </div>
      </>
       );
+    }else{
+      return ''
+    }
+    
 
   }
 }

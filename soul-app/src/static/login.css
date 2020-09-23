@@ -1,0 +1,43 @@
+.content-container{
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.main-tip{
+  font-size: 3.2vw;
+    color: #fff;
+    line-height: 4.53333vw;
+    letter-spacing: 1.6vw;
+    margin: 0 auto 6.66667vw;
+    text-align: center;
+}
+.am-list{
+  position: absolute;
+  top: 37%;
+  left:7%
+}
+.am-button{
+  position: absolute;
+  top: 50%;
+  left:40%
+}
+.am-flexbox{
+  position: absolute;
+  justify-content: space-between;
+  width: 84%;
+  top: 44.5%;
+  left: 7%;
+}
+.am-flexbox-item{
+  color: #25d4d0;
+  font-size: 14px;
+}
+.login_sms{
+  text-align: right;
+}
+.am-input-label{
+  color: #25d4d0!important;
+}
