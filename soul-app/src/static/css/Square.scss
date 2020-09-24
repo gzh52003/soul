@@ -1,5 +1,83 @@
+@function vw($px){//$px为需要转换的字号
+    @return $px/1080 * 100 * 1vw; //100px为根字体大小
+}
 .Square-wrap{
     .am-tabs-default-bar-content{
         width: 12.5rem;
     }
+}
+.Moment{
+    list-style: none;
+    padding:vw(32);
+    .MomentList{
+        margin-bottom: vw(80);
+        .MomentUser-row{
+            .avatar{
+                float: left;
+                width: vw(150);
+                height:vw(150);
+                border-radius: vw(150);
+                img{
+                    width:100%;
+                    height:100%;
+                    border-radius: vw(150);
+                }
+            }
+            .describe{
+                float: left;
+                margin-left: vw(18);
+                .from{
+                    font-size: vw(38);
+                    color:#898989;
+                    display: block;
+                    padding-top: vw(26);
+                }
+                .time{
+                    padding-top: vw(16);
+                    font-size: vw(30);
+                    color:#cdcdcd
+                }
+                
+            }
+            .share{
+                float: right;
+            }
+        }
+        .Moment-Content{
+            padding-left: vw(155);
+            padding-top: vw(36);
+            img{
+                width:vw(660);
+                height: vw(500);
+                border-radius: vw(50);
+            }
+            .location{
+                padding-top: vw(40);
+                font-size: vw(30);
+                color:#22dccf;
+                img{
+                    width: vw(32);
+                    height: vw(30);
+                }
+            }
+            .option{
+                padding-top: vw(60);
+                img{
+                    width: vw(56);
+                 height:vw(56);
+                }
+                .LikeIcon{
+                    margin-left: vw(460);
+                }
+                .Like,.comment{
+                    font-size: vw(32);
+                    color:#bbbbbb
+                }
+                .commentIcon{
+                    margin-left: vw(82) ;
+                }
+            }
+        }
+    }
+   
 }

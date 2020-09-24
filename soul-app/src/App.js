@@ -6,7 +6,7 @@ import './static/css/common.scss'
 @withRouter
 class App extends React.Component {
   state = {
-    selectedTab: '/Home',
+    selectedTab: '/Square',
     hidden: false,
     fullScreen: true,
     TabBarList :[{
@@ -42,14 +42,22 @@ class App extends React.Component {
     this.props.history.push(path)
   }
   componentDidMount(){
-    this.setState({
-      selectedTab:this.props.location.pathname
-    })
+    if(this.props.location.pathname==='/'){
+      this.setState({
+        selectedTab:this.state.selectedTab
+      })
+    }else{
+      this.setState({
+        selectedTab:this.props.history.location.pathname
+      })
+    }
+   
   }
   render() {
     const {TabBarList} = this.state
     return (
       <>
+      
       <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: "100%" }}>
         <TabBar
           unselectedTintColor="#949494"

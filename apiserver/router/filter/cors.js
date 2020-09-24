@@ -3,10 +3,10 @@ const allow_origin = ['http://localhost:8080', 'http://localhost:3000', 'http://
 function cors(req, res, next) {
     const origin = req.get('Origin');
     console.log(origin);
-    //if (allow_origin.includes(origin)) {
+    if (allow_origin.includes(origin)) {
         res.set({
-            "Access-Control-Allow-Origin": "*",
-            //"Access-Control-Allow-Origin": origin,
+            // "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": origin,
             "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
             "Access-Control-Allow-Methods": "PUT,POST,GET,PATCH,DELETE,OPTIONS",
             "Access-Control-Allow-Credentials": true,
@@ -16,7 +16,7 @@ function cors(req, res, next) {
         } else {
             next();
         }
-     //}
+     }
 
 }
 module.exports = cors;

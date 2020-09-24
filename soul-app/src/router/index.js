@@ -11,7 +11,7 @@ export const routes =[
         path:'/',
         exact:true,
         render:()=>(
-            <Redirect to='/Home'></Redirect>
+            <Redirect to='/Square'></Redirect>
         )
     },
     {
