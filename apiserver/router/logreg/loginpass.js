@@ -6,6 +6,7 @@ const {
 const {
     md5
 } = require("../../utils/secret");
+const token = require("../../utils/token")
 const {
     Enum
 } = require("../../utils/Enum");
@@ -27,6 +28,12 @@ router.get("/", async (req, res) => {
             verCodeRight: true,
             userData: userInfo[0]
         }
+
+        let authorization;
+        authorization = token.create({
+            _id:data.userData._id
+        }, '7d')
+        data.authorization = authorization
         res.send(Enum(1001,data))
     } else if(userInfo.length === 0){
         let data = {verCodeRight: false}

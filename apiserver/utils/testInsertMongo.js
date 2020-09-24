@@ -1,19 +1,15 @@
 const {insert} = require("./mongo");
 const {md5} = require("./secret");
 
-// //模拟userList数据
+//模拟userList数据
 // async function testInsertUserList(){
-//     for(let i = 1;i <= 64 ; i++){
+//     for(let i = 1;i <= 10 ; i++){
 //         await insert("userList",{
 //             phoneNum : i+"",
-//             password : md5(123456),
-//             userName : "dandan"+i,
-//             planet : "",
 //             avatorImgUrl : "",
-//             bgImgUrl : "",
 //             birthday : "880992000000",
 //             creTime : Date.now()+"",
-//             gender : "unkown",
+//             gender : "unkonw",
 //             gravity : [],
 //             followed : [],
 //             beFollowed : [],
@@ -26,9 +22,9 @@ const {md5} = require("./secret");
 
 //模拟instantsList数据
 async function testInsertinstantsList(){
-    for(let i = 1;i <= 10 ; i++){
+    for(let i = 1;i <= 5 ; i++){
         await insert("instantsList",{
-            userId : "5f6c5c4d4db5d900c0ba5b51",
+            userId : "5f6c0bec66529520f0ee2abc",
             creTime: Date.now()+"",
             tags : [ 
                 "比惨大会", 

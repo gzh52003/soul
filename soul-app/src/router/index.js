@@ -1,10 +1,12 @@
 import Home from '~/Home'
 import React from 'react'
-import {lazy} from 'react'
-const Mine = lazy(()=>import('~/Mine'))
-const Chat = lazy(()=>import('~/Chat'))
-const Square = lazy(()=>import('~/Square/index.js'))
-const Search = lazy(()=>import('~/Square/search.js'))
+import { lazy } from 'react'
+const Mine = lazy(() => import('~/Mine'))
+const Chat = lazy(() => import('~/Chat'))
+const More = lazy(() => import('~/More'))
+const Login = lazy(() => import('~/Login'))
+const Square = lazy(() => import('~/Square/index.js'))
+const Search = lazy(() => import('~/Square/search.js'))
 import { Redirect } from 'react-router-dom'
 export const routes =[
     {

@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const session = require("express-session")
+const cors = require("./filter/cors");
 //login
 const loginAuto = require("./logreg/autoCheck")
 const loginPass = require("./logreg/loginpass")
@@ -12,6 +13,7 @@ const loginSms = require("./logreg/loginSms")
 router.use(express.urlencoded({
     extended:false
 }),express.json())
+router.use(cors);
 router.use(session({
     secret: 'dandan',
     resave: false,
