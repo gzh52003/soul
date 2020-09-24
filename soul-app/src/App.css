@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.am-tab-bar-bar{
+  /* position: fixed; */
+  /* bottom: 0; */
+  z-index: 123456;
+}

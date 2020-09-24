@@ -1,13 +1,16 @@
 import React from 'react'
 import '../static/login.css'
 import { List, InputItem, Toast, Button, Flex, NavBar, Icon } from 'antd-mobile';
+import request from '../utils/request';
+
 export default class Login extends React.Component {
   state = {
     hasError: false,
     value: '',
     disabled: true,
-    userInfo: [],
-    inputPasswordShow: false
+    phoneNum: '',
+    inputPasswordShow: false,
+    smsShow:false
   }
   onErrorClick = () => {
     if (this.state.hasError) {
@@ -15,7 +18,7 @@ export default class Login extends React.Component {
     }
   }
   onChange = (value) => {
-    if (value.replace(/\s/g, '').length < 11) {
+    if (value.replace(/\s/g, '').length < 1) {
       this.setState({
         hasError: true,
         disabled: true
@@ -31,9 +34,9 @@ export default class Login extends React.Component {
     });
   }
   inputPhoneNumber = () => {
-    const { userInfo, value, inputPasswordShow } = this.state
+    const { phoneNum, value, inputPasswordShow } = this.state
     this.setState({
-      userInfo: [{ phoneNumber: value }],
+      phoneNum: value,
       inputPasswordShow: true,
       value: ''
     });
@@ -41,20 +44,34 @@ export default class Login extends React.Component {
   goback = () => {
     this.setState({
       inputPasswordShow: false,
-      value: this.state.userInfo[0].phoneNumber
+      value: this.state.phoneNum
     })
   }
-  inputPassword = () => {
-    const { userInfo, value, inputPasswordShow } = this.state
-    this.setState({
-      userInfo: [...userInfo, { password: value }]
-    })
-  }
-  render() {
-    const { disabled, inputPasswordShow } = this.state
-    return (
 
-      <div style={{ background: 'url(./assets/img/img-video.webp) no-repeat center center/cover', width: '100%', height: '100%' }}>
+  inputPassword = async () => {
+    const { phoneNum, value } = this.state
+    let password = value
+    const {data} = await request.get(`/loginpass?phoneNum=${phoneNum}&password=${password}`,)
+    console.log('res', data)
+    if(data.verCodeRight){
+      localStorage.setItem('userInfo',JSON.stringify(data))
+      this.props.history.replace('/mine')
+    }
+  }
+
+  smsLogin=()=>{
+    this.setState({
+      smsShow:true
+    })
+  }
+
+
+
+  render() {
+    const { disabled, inputPasswordShow,smsShow } = this.state
+    return (
+        // background: 'url(./assets/img/img-video.webp) no-repeat center center/cover',
+      <div style={{  width: '100%', height: '100%' }}>
 
         <div style={{
           position: 'absolute',
@@ -62,7 +79,7 @@ export default class Login extends React.Component {
           left: 0,
           bottom: 0,
           right: 0,
-          background: "rgba(0,0,0,.7)"
+          background: "rgba(0,0,0,1)"
         }}>
           {
             inputPasswordShow ? <div onClick={this.goback}>
@@ -84,28 +101,34 @@ export default class Login extends React.Component {
         </div>
 
         {
-          inputPasswordShow ? <><List>
+          inputPasswordShow ? smsShow?
+          <div className='smsTitle'>
+            <p><span style={{background:"url(./assets/img/验证码.svg) no-repeat",display:'inline-block',width:'10px',height:'10px'}}></span><span>验证码</span></p>
+            
+          </div>
+          :<><List>
             <InputItem
-              type="phone"
+              type="password"
               placeholder="请在这里输入密码"
               error={this.state.hasError}
               onErrorClick={this.onErrorClick}
               onChange={this.onChange}
               value={this.state.value}
-
             >密码
               <span style={{ background: 'url(./assets/img/密码.svg) no-repeat 6px 6px', backgroundSize: '20px 20px', width: '25px', height: '25px', display: 'inline-block' }}></span>
             </InputItem>
           </List>
             <Flex>
               <Flex.Item className='login_trouble'>登录遇到问题</Flex.Item>
-              <Flex.Item className='login_sms'>验证码登录</Flex.Item>
+              <Flex.Item className='login_sms' onClick={this.smsLogin}>验证码登录</Flex.Item>
             </Flex>
-
-            <Button onClick={this.inputPassword} disabled={disabled} type="primary" inline style={{ marginRight: '4px', backgroundColor: '#25d4d0' }}>确定</Button>
-          </> : <><List>
+            <Button onClick={this.inputPassword} disabled={disabled} type="primary" inline style={{ marginRight: '4px', backgroundColor: '#25d4d0' }} >确定</Button>
+          </> : 
+          
+          
+          <><List>
             <InputItem
-              type="phone"
+              type="text"
               placeholder="手机号"
               error={this.state.hasError}
               onErrorClick={this.onErrorClick}
