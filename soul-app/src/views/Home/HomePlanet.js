@@ -1,19 +1,19 @@
 import React from 'react'
-
+import request from '../../utils/request'
 
 export default class HomePlanet extends React.PureComponent{
     state={
         userList:[]
     }
-    componentDidMount(){
-        let tpmArr = [];
-        for(let i = 1 ; i <= 62;i++){
-            tpmArr.push({
-                _id:i+"",
-                userName:"旦旦"+i,
-                gender:Math.random() > 0.5 ? "female":"male"
-            })
-        }
+    async componentDidMount(){
+        let userData = await request.get('/getplanetinfo',{phoneNum:1})
+        let tpmArr =  userData.data.map(item=>{
+            return{
+                _id:item._id,
+                userName:item.userName,
+                gender:item.gender
+            }
+        })
         this.setState({userList:tpmArr})
         try{
             let oContainer = document.getElementsByClassName("home-planet-container")[0]
