@@ -62,12 +62,7 @@ class App extends React.Component {
     if(location.pathname!=='/Login'){
       return (
       <>
-<<<<<<< HEAD
-      
-=======
-     
->>>>>>> dev
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: "100%" }}>
+      <div style={this.state.fullScreen ? { position: 'fixed', width: '100%', bottom: 0 } : { height: "100%" }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"

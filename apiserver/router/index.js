@@ -8,7 +8,7 @@ const loginPass = require("./logreg/loginpass")
 const regSms = require("./logreg/regSms")
 const sendSms = require("./logreg/sendSms")
 const loginSms = require("./logreg/loginSms")
-
+const moment = require('./Moment/index')
 
 router.use(express.urlencoded({
     extended:false
@@ -29,5 +29,5 @@ router.use("/regsms",regSms)
 router.use("/loginpass",loginPass)
 router.use("/sendsms",sendSms)
 router.use("/loginsms",loginSms)
-
+router.use('/Moment',moment)
 module.exports = router

@@ -2,6 +2,7 @@ import React from 'react'
 import { NavBar, Icon, Button, Flex, Card, WingBlank, WhiteSpace } from 'antd-mobile';
 import '../static/mine.css'
 export default class Mine extends React.Component {
+
   state = {
     navBarFix: false,
     navBarEle: null,
@@ -12,8 +13,6 @@ export default class Mine extends React.Component {
     this.state.navBarEle = document.querySelector('.am-navbar')
     //获取的当天时间戳
     const res1 = Date.now()
-
-
     //把创建账号的时间戳转化成日期格式
     var time = new Date(parseInt(this.state.userInfo.creTime));
     var y = time.getFullYear();
@@ -27,6 +26,7 @@ export default class Mine extends React.Component {
       creTime: res
     })
     console.log(Math.ceil((res1 - this.state.userInfo.creTime) / (60 * 60 * 24) / 1000))
+    
   }
   render() {
 

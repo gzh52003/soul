@@ -10,7 +10,7 @@ export default class Share extends Component{
     onSelect = (opt) => {
         // console.log(opt.props.value);
         this.setState({
-          visible: false,
+          visible: true,
           selected: opt.props.value,
         });
       };

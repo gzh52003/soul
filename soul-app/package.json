@@ -14,7 +14,8 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-sticky": "^6.0.3"
+    "react-sticky": "^6.0.3",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",

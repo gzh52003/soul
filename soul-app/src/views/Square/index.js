@@ -4,6 +4,8 @@ import '../../static/css/Square.scss'
 import {SearchBar,Icon,Popover,NavBar} from 'antd-mobile'
 import $ from 'jquery'
 import '../../static/css/common.scss'
+import request from '../../utils/request'
+import formatTime from '../../utils/formatTime'
 const Item = Popover.Item
 const myImg = src => <img src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`} className="am-icon am-icon-xs" alt="" />;
 export default function Square(props){
@@ -22,20 +24,28 @@ export default function Square(props){
       props.history.push('/Search')
     },[])
   let [visible,change] =useState(false);
+  let [dataList,addData] = useState([])
    const handleVisibleChange = useCallback((visible)=>{
-        visible=visible;
-        console.log(visible);
+        change(visible=visible)
+        //visible=visible;
+        console.log("123",visible);
+   },[])                              
+   useEffect( ()=>{
+    ( async function getData(){
+      const result = await request.get('/Moment');
+      addData(dataList = result.data)
+      console.log(dataList);
+     })()
    },[])
-   useEffect(()=>{
-     const data = 
-   })
    const onSelect = useCallback((opt)=>{
      change(visible=false);
-     console.log((opt.props.value));
    })
    const show = useCallback(()=>{
      console.log(1);
    })
+   const Ellipisis = useCallback(()=>{
+     console.log(1);
+   },[])
     return(
         <>
           <HeaderNav title={title} tab={tabs}/> 
@@ -44,170 +54,62 @@ export default function Square(props){
            >
            </SearchBar>
             <ul className='Moment'>
-                <li className='MomentList'>
-                    <div className='MomentUser-row clear' >
-                        <div className='avatar'>
-                          <img src='./assets/img/iuu.jpg'></img>
-                        </div>
-                        <div className='describe'>
-                           <span className='from'>来自艺术星球</span>
-                           <span className='time'>刚刚推荐</span>
-                        </div>
-                        <div className='share' >
-                            <Popover mask
-                            overlayClassName="fortest"
-                           
-                            overlayStyle={{ color: 'currentColor' }}
-                            visible={visible}
-                            overlay={[
-                              (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
-                              (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
-                              (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                                <span style={{ marginRight: 5 }}>Help</span>
-                              </Item>),
-                            ]}
-                            align={{
-                              overflow: { adjustY: 0, adjustX: 0 },
-                              offset: [-10, 0],
-                            }}
-                            onVisibleChange={handleVisibleChange}
-                            onSelect={onSelect}
-                          >
-                            <div style={{
-                              height: '100%',
-                              padding: '0 15px',
-                              marginRight: '-15px',
-                              display: 'flex',
-                              alignItems: 'center',
-                            }}
-                            >
-                              <Icon type="ellipsis" />
-                            </div>
-                          </Popover>
-                        </div>
+              {
+                dataList.map(item=>( <li className='MomentList' key={item._id}>
+                <div className='MomentUser-row clear' >
+                    <div className='avatar'>
+                      <img src='./assets/img/iuu.jpg'></img>
                     </div>
-                    <div className='Moment-Content '>
-                           <div><img src='./assets/img/豪车3.jpg'></img></div> 
-                           <div className='location'><img src='./assets/img/地址.svg'></img>广州市</div>
-                           <div className='option'>
-                           <img src='./assets/img/分享.svg'></img>
-                           <img src='./assets/img/爱心.svg' className='LikeIcon'></img>
-                           <span className='Like'>22</span>
-                           <img src='./assets/img/评论.svg' className='commentIcon'></img>
-                           <span className='comment'>44 </span>
-                           </div>
+                    <div className='describe'>
+                       <span className='from'>来自艺术星球</span>
+                       <span className='time'>{formatTime(item.creTime)}</span>
                     </div>
-                    </li>
-
-                    <li className='MomentList'>
-                    <div className='MomentUser-row clear' >
-                        <div className='avatar'>
-                          <img src='./assets/img/iuu.jpg'></img>
+                    <div className='share' >
+                        <Popover mask
+                        overlayClassName="fortest"
+                        overlayStyle={{ color: 'currentColor' }}
+                        visible={visible}
+                        overlay={[
+                          (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">发现</Item>),
+                          (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>加微信鸭</Item>),
+                          (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
+                            <span style={{ marginRight: 5 }}>向他询问</span>
+                          </Item>),
+                        ]}
+                        align={{
+                          overflow: { adjustY: 0, adjustX: 0 },
+                          offset: [-10, 0],
+                        }}
+                        onVisibleChange={()=>{console.log("asdfsf",handleVisibleChange);}}
+                        onSelect={onSelect}
+                      >
+                        <div style={{
+                          height: '100%',
+                          padding: '0 15px',
+                          marginRight: '-15px',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        >
+                          <Icon type="ellipsis" onClick={Ellipisis}/>
                         </div>
-                        <div className='describe'>
-                           <span className='from'>来自艺术星球</span>
-                           <span className='time'>刚刚推荐</span>
-                        </div>
-                        <div className='share' >
-                            <Popover mask
-                            overlayClassName="fortest"
-                           
-                            overlayStyle={{ color: 'currentColor' }}
-                            visible={visible}
-                            overlay={[
-                              (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
-                              (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
-                              (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                                <span style={{ marginRight: 5 }}>Help</span>
-                              </Item>),
-                            ]}
-                            align={{
-                              overflow: { adjustY: 0, adjustX: 0 },
-                              offset: [-10, 0],
-                            }}
-                            onVisibleChange={handleVisibleChange}
-                            onSelect={onSelect}
-                          >
-                            <div style={{
-                              height: '100%',
-                              padding: '0 15px',
-                              marginRight: '-15px',
-                              display: 'flex',
-                              alignItems: 'center',
-                            }}
-                            >
-                              <Icon type="ellipsis" />
-                            </div>
-                          </Popover>
-                        </div>
+                      </Popover>
                     </div>
-                    <div className='Moment-Content '>
-                           <div><img src='./assets/img/豪车3.jpg'></img></div> 
-                           <div className='location'><img src='./assets/img/地址.svg'></img>广州市</div>
-                           <div className='option'>
-                           <img src='./assets/img/分享.svg'></img>
-                           <img src='./assets/img/爱心.svg' className='LikeIcon'></img>
-                           <span className='Like'>22</span>
-                           <img src='./assets/img/评论.svg' className='commentIcon'></img>
-                           <span className='comment'>44 </span>
-                           </div>
-                    </div>
-                    </li>
-
-                    <li className='MomentList'>
-                    <div className='MomentUser-row clear' >
-                        <div className='avatar'>
-                          <img src='./assets/img/iuu.jpg'></img>
-                        </div>
-                        <div className='describe'>
-                           <span className='from'>来自艺术星球</span>
-                           <span className='time'>刚刚推荐</span>
-                        </div>
-                        <div className='share' >
-                            <Popover mask
-                            overlayClassName="fortest"
-                           
-                            overlayStyle={{ color: 'currentColor' }}
-                            visible={visible}
-                            overlay={[
-                              (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
-                              (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
-                              (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                                <span style={{ marginRight: 5 }}>Help</span>
-                              </Item>),
-                            ]}
-                            align={{
-                              overflow: { adjustY: 0, adjustX: 0 },
-                              offset: [-10, 0],
-                            }}
-                            onVisibleChange={handleVisibleChange}
-                            onSelect={onSelect}
-                          >
-                            <div style={{
-                              height: '100%',
-                              padding: '0 15px',
-                              marginRight: '-15px',
-                              display: 'flex',
-                              alignItems: 'center',
-                            }}
-                            >
-                              <Icon type="ellipsis" />
-                            </div>
-                          </Popover>
-                        </div>
-                    </div>
-                    <div className='Moment-Content '>
-                           <div><img src='./assets/img/豪车3.jpg'></img></div> 
-                           <div className='location'><img src='./assets/img/地址.svg'></img>广州市</div>
-                           <div className='option'>
-                           <img src='./assets/img/分享.svg'></img>
-                           <img src='./assets/img/爱心.svg' className='LikeIcon'></img>
-                           <span className='Like'>22</span>
-                           <img src='./assets/img/评论.svg' className='commentIcon'></img>
-                           <span className='comment'>44 </span>
-                           </div>
-                    </div>
-                    </li>
+                </div>
+                <div className='Moment-Content '>
+                       <div><img src={item.imgUrl[0]}></img></div> 
+                       <div className='location'><img src={item.location}></img>广州市</div>
+                       <div className='option'>
+                       <img src='./assets/img/分享.svg'></img>
+                       <img src='./assets/img/爱心.svg' className='LikeIcon'></img>
+                       <span className='Like'>{item.thumbs.length}</span>
+                       <img src='./assets/img/评论.svg' className='commentIcon'></img>
+                       <span className='comment'>{item.comments.length} </span>
+                       </div>
+                </div>
+                </li>
+))
+              }
             </ul>
 
         </>
