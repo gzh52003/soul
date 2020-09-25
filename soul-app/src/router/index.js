@@ -2,7 +2,7 @@ import Home from '~/Home/index.js'
 import React from 'react'
 import { lazy } from 'react'
 const Mine = lazy(() => import('~/Mine'))
-const Chat = lazy(() => import('~/Chat'))
+const Chat = lazy(() => import('~/Chat/index.js'))
 const More = lazy(() => import('~/More'))
 const Login = lazy(() => import('~/Login'))
 const Square = lazy(() => import('~/Square/index.js'))

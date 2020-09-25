@@ -8,7 +8,8 @@ const loginPass = require("./logreg/loginpass")
 const regSms = require("./logreg/regSms")
 const sendSms = require("./logreg/sendSms")
 const loginSms = require("./logreg/loginSms")
-
+//planet
+const getPlanetInfo = require('./getPlanet/getPlanetInfo')
 
 router.use(express.urlencoded({
     extended:false
@@ -23,11 +24,15 @@ router.use(session({
     }
 }))
 
+console.log("allrouter")
+
 //login
 router.use("/loginauto",loginAuto)
 router.use("/regsms",regSms)
 router.use("/loginpass",loginPass)
 router.use("/sendsms",sendSms)
 router.use("/loginsms",loginSms)
+//planet
+router.use("/getplanetinfo",getPlanetInfo)
 
 module.exports = router

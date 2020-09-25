@@ -88,7 +88,7 @@ export default class HomePlanet extends React.PureComponent{
                         this.state.userList.map((item,i)=>(<>
                             <li 
                             className="planet-item"
-                            key={item._id}
+                            key={item._id+""}
                             _id={item._id}
                             style={(function(){
                                 if(i<12){
