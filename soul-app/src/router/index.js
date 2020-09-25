@@ -1,4 +1,4 @@
-import Home from '~/Home'
+import Home from '~/Home/index.js'
 import React from 'react'
 import {lazy} from 'react'
 const Mine = lazy(()=>import('~/Mine'))

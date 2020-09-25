@@ -9,6 +9,7 @@ class App extends React.Component {
     selectedTab: '/Home',
     hidden: false,
     fullScreen: true,
+    show:true,
     TabBarList :[{
       name:'planet',
       title:'星球',
@@ -51,7 +52,8 @@ class App extends React.Component {
     const {TabBarList} = this.state
     return (
       <>
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: "100%" }}>
+      {/* <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: "100%" }}> */}
+      <div style={ { position: 'fixed', height: '8%', width: '100%', bottom: 0 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"

@@ -12,7 +12,9 @@
     "react-dom": "^16.13.1",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-sticky": "^6.0.3",
+    "swiper": "^6.2.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
