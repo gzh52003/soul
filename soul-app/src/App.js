@@ -2,11 +2,11 @@ import React,{Suspense} from 'react';
 import './App.css';
 import { withRouter,Switch } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
-
+import './static/css/common.scss'
 @withRouter
 class App extends React.Component {
   state = {
-    selectedTab: '/Home',
+    selectedTab: '/Square',
     hidden: false,
     fullScreen: true,
     show:true,
@@ -43,15 +43,26 @@ class App extends React.Component {
     this.props.history.push(path)
   }
   componentDidMount(){
-    console.log(this.props.location.pathname);
-    this.setState({
-      selectedTab:this.props.location.pathname
-    })
+    if(this.props.location.pathname==='/'){
+      this.setState({
+        selectedTab:this.state.selectedTab
+      })
+    }else{
+      this.setState({
+        selectedTab:this.props.history.location.pathname
+      })
+    }
+   
   }
   render() {
-    const {TabBarList} = this.state
-    return (
+    const {TabBarList,show} = this.state
+    const {location} = this.props
+    console.log('props',location.pathname)
+    
+    if(location.pathname!=='/Login'){
+      return (
       <>
+
       {/* <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: "100%" }}> */}
       <div style={ { position: 'fixed', height: '8%', width: '100%', bottom: 0 }}>
         <TabBar
@@ -77,7 +88,7 @@ class App extends React.Component {
               />
             }
             
-            badge={1}
+            badge={0}
             onPress={() => {
              this.goto(item.path);
             }}
@@ -88,6 +99,10 @@ class App extends React.Component {
       </div>
      </>
       );
+    }else{
+      return ''
+    }
+    
 
   }
 }

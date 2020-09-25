@@ -1,0 +1,131 @@
+@function vw($px){//$px为需要转换的字号
+    @return $px/1080 * 100 * 1vw; //100px为根字体大小
+}
+
+.Search-wrap{
+    padding:0 1.25rem;
+    background: #ffffff;
+    .Nav{
+        width: 335px;
+    }
+    .Search{
+        width: 12.5rem;
+    }
+    .am-navbar-left{
+        width: 0.3125rem;
+        padding-left: 0;
+    }
+    
+    .am-navbar-right{
+        width: 0.3125rem;
+        margin-right: 0;
+    }
+    .am-search {
+        background: #ffffff;
+        .am-search-synthetic-ph{
+            background: #f7f7f7;
+            border-radius: 1.25rem;
+        }
+    }
+    .content{
+        padding-top: 0.625rem;
+        .placeholder {
+            background-color: #f7f7f7;
+            color: #bbb;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            border-radius: 1.25rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        .history-title{
+            position: relative;
+            h5{
+                font-size:1rem;
+                float: left;
+                line-height: 1rem;
+                font-weight: normal;
+                color: #888888;
+            }
+            .icon-trash{
+                position: absolute;
+                top:1.875rem;
+                right: 0.625rem;
+                float: right;
+                width: 1rem;
+                height: 1rem;
+                img{
+                    height:100%;
+                    width: 100%;
+                    z-index:10;
+                }
+            }
+        }
+        .hot{
+            .hot-tit{
+                padding-top: vw(88);
+                font-size:1rem;
+                    line-height: 1rem;
+                    font-weight: normal;
+                    color: #888888;
+                    .hot-title{
+                        display: inline-block;
+                    }
+                    img{
+                        margin-left: vw(35);
+                        width:vw(40);
+                        height: vw(40);
+
+                    }
+            }
+            .hotList{
+                list-style: none;
+                margin-bottom: vw(36);
+                padding-left: 0;
+                li{
+                    height: vw(210);
+                    padding-top: vw(26);
+                    .No{
+                        float: left;
+                        width: vw(72);
+                        height:vw(154);
+                        line-height: vw(154);
+                        font-size: vw(34);
+                        color:#ef7375
+                    }
+                    .hot-content{
+                        float: left;
+                        width: vw(587);
+                       
+                           
+                            .question{
+                                font-size: vw(37);
+                                line-height: vw(58);
+                                img{
+                                    height: vw(44);
+                                    width:vw(44)
+                                }
+                            }
+                           .detail{
+                            font-size: vw(37);
+                            line-height: vw(58);
+                                color:#b6b6b6 ;
+
+                           } 
+                        
+                        
+                    }
+                    .hotNum{
+                        padding-top:vw(30);
+                        line-height: vw(58);
+                        float: right;
+                        color:#b6b6b6
+                    }
+                }
+            }
+        }
+    }
+}
+

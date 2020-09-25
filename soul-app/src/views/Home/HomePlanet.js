@@ -7,7 +7,7 @@ export default class HomePlanet extends React.PureComponent{
     }
     componentDidMount(){
         let tpmArr = [];
-        for(let i = 0 ; i < 62;i++){
+        for(let i = 1 ; i <= 62;i++){
             tpmArr.push({
                 _id:i+"",
                 userName:"旦旦"+i,
@@ -89,7 +89,7 @@ export default class HomePlanet extends React.PureComponent{
                             <li 
                             className="planet-item"
                             key={item._id}
-                            asd={item._id}
+                            _id={item._id}
                             style={(function(){
                                 if(i<12){
                                     return {
@@ -121,14 +121,6 @@ export default class HomePlanet extends React.PureComponent{
                                     }
                                 }
                             })()}
-                            // style={item.gender == "female"?
-                            //     {
-                            //         backgroundColor:"cyan"
-                            //     }:
-                            //     {
-                            //         backgroundColor:"pink"
-                            //     }
-                            // }
                             >
                                 <span className="planet-text" key={"text"+item._id}>{item.userName}</span>
                                <i className="planet-dot" key={"dot"+item._id}></i> 
@@ -141,12 +133,3 @@ export default class HomePlanet extends React.PureComponent{
         )
     }
 }
-// function HomePlanet(){
-//     return(
-//         <div className="home-planet-container"> 
-//             <ul className="home-planet-container">
-//                 {}
-//             </ul>
-//         </div>
-//     )
-// }

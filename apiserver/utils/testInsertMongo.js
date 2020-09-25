@@ -1,26 +1,19 @@
 const {insert} = require("./mongo");
 const {md5} = require("./secret");
 
-// //模拟userList数据
+//模拟userList数据
 // async function testInsertUserList(){
-//     for(let i = 1;i <= 64 ; i++){
+//     for(let i = 1;i <= 10 ; i++){
 //         await insert("userList",{
-            // phoneNum : i+"",
-            // password : md5(123456),
-            // userName : "dandan"+i,
-            // planet : "科学怪人",
-            // avatorImgUrl : "",
-            // bgImgUrl : "",
-            // birthday : "880992000000",
-            // creTime : Date.now()+"",
-            // gender : Math.random > 0.5 ? "female" : "male",
-            // gravity : [ 
-            //     "滑板", 
-            //     "前端"
-            // ],
-            // followed : [],
-            // beFollowed : [],
-            // instants : []
+//             phoneNum : i+"",
+//             avatorImgUrl : "",
+//             birthday : "880992000000",
+//             creTime : Date.now()+"",
+//             gender : "unkonw",
+//             gravity : [],
+//             followed : [],
+//             beFollowed : [],
+//             instants : []
 //         })
 //     }
 // }
@@ -29,9 +22,9 @@ const {md5} = require("./secret");
 
 //模拟instantsList数据
 async function testInsertinstantsList(){
-    for(let i = 1;i <= 10 ; i++){
+    for(let i = 1;i <= 5 ; i++){
         await insert("instantsList",{
-            userId : "5f6ac4bc8725e53ff4b47587",
+            userId : "5f6c0bec66529520f0ee2abc",
             creTime: Date.now()+"",
             tags : [ 
                 "比惨大会", 
@@ -39,16 +32,16 @@ async function testInsertinstantsList(){
             ],
             context : "公司准备裁员了,我悄悄包了500快红包给我们主管。就在我感觉高枕无忧，前途一片光明的时候，我们主管被裁了......",
             imgUrl : [
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg1.jpg",
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg2.jpg",
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg3.jpg",
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg4.jpg"
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg1.jpg",
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg2.jpg",
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg3.jpg",
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg4.jpg"
             ],
             location : "广州市",
             thumbs : [
-                "5f6ac4bc8725e53ff4b47588",
-                "5f6ac4bc8725e53ff4b47589",
-                "5f6ac4bc8725e53ff4b4758a"
+                "5f6c5c4d4db5d900c0ba5b52",
+                "5f6c5c4d4db5d900c0ba5b53",
+                "5f6c5c4d4db5d900c0ba5b54"
             ],
             comments : [
             ]
