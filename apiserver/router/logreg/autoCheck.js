@@ -9,10 +9,10 @@ const {
 const Core = require('@alicloud/pop-core');
 
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
     const {
         phoneNum
-    } = req.query;
+    } = req.body;
     //console.log("phoneNum=",phoneNum);
     const user = await find("userList", {
         phoneNum
@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
         randomNum = randomNum.padStart(4, '0');
         const TemplateParam = `{"code":${randomNum}}`
         console.log("");
-        req.session.Sms = randomNum//
+        req.session.Sms = randomNum
         var client = new Core({
             accessKeyId: 'LTAI4G2vNjhrGTESjtA9axB6',
             accessKeySecret: 'QFNGnTnhvR5P1GDMZFz9ahFPm6zWwm',
@@ -52,6 +52,8 @@ router.get("/", async (req, res) => {
         }, (ex) => {
             console.log(ex);
         })
+
+        res.send(Enum(1001,data,"用户不存在且已成功发送短信验证码"))
     }else{
         res.send(Enum(1003,{},"数据库发现同号码用户,数据库异常"))
     }

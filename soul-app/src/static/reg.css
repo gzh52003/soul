@@ -71,12 +71,19 @@
 .smsTitle{
   background-color: #fff;
   position: absolute;
-  z-index: 123;
+  z-index: 12;
   top: 36%;
   left: 8%;
 }
 p .am-button{
   position: absolute;
   top: 50%;
-  left:38%
+  left:32%
+}
+.am-toast-mask{
+  position: fixed;
+  z-index: 123467;
+}
+.am-list-content{
+  color: #25d4d0!important;
 }

@@ -13,6 +13,8 @@ router.get("/",async (req,res)=>{
         phoneNum,
         yzm
     } = req.query
+    console.log('req.session.Sms',req.session.Sms)
+    console.log('yzm',yzm)
     if (yzm != req.session.Sms) {
         res.send(Enum(1001,{
             verCodeRight:false

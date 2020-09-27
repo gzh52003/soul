@@ -2,8 +2,6 @@ import React, { useCallback, useState } from 'react'
 import { NavBar, Icon, List, ActionSheet, WingBlank, WhiteSpace, Button, Toast } from 'antd-mobile';
 import '../static/more.css'
 
-
-
 export default function More(props) {
   const Item = List.Item;
   const Brief = Item.Brief;
@@ -44,13 +42,11 @@ export default function More(props) {
       'data-seed': 'logId',
     },
     (buttonIndex) => {
-      // this.setState({ clicked: BUTTONS[buttonIndex] });
       if(BUTTONS[buttonIndex]==='退出登录'){
-        console.log(props)
-        props.history.push('/Login')
+        localStorage.removeItem('userInfo')
+        props.history.push('/login')
       }
     });
-   
   })
 
   return (
@@ -60,11 +56,12 @@ export default function More(props) {
       <NavBar
         mode="light"
         icon={<Icon type="left" />}
-        onLeftClick={() => console.log('onLeftClick')}
+        onLeftClick={() => props.history.push('/mine')}
+        style={{zIndex:1234,position:'relative'}}
       >设置</NavBar>
 
       <List className="my-list">
-        <Item style={{ background: 'url(./assets/img/我的.svg) no-repeat 10px', backgroundSize: '20px 20px' }} arrow="horizontal" multipleLine onClick={() => { }}>
+        <Item style={{ background: 'url(./assets/img/我的.svg) no-repeat 10px', backgroundSize: '20px 20px' }} arrow="horizontal" multipleLine >
           <span className='item_text'>账户与安全</span>
         </Item>
       </List>
@@ -73,7 +70,7 @@ export default function More(props) {
         {
           list2.map(item => {
             return (
-              <Item style={{ background: `url(${item.icon}) no-repeat 10px`, backgroundSize: '20px 20px' }} arrow="horizontal" multipleLine onClick={() => { }}>
+              <Item style={{ background: `url(${item.icon}) no-repeat 10px`, backgroundSize: '20px 20px' }} arrow="horizontal" multipleLine key={item.title}>
                 <span className='item_text'>{item.title}</span>
               </Item>
             )

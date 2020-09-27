@@ -7,8 +7,8 @@ const More = lazy(() => import('~/More'))
 const Login = lazy(() => import('~/Login'))
 const Square = lazy(() => import('~/Square/index.js'))
 const Search = lazy(() => import('~/Square/search.js'))
-const Detail = lazy(()=>import('~/Square/details.js'))
 const Publish = lazy(()=>import('~/Publish/publish.js'))
+const Reg = lazy(() => import('~/Reg'))
 import { Redirect } from 'react-router-dom'
 export const routes =[
     {
@@ -46,5 +46,14 @@ export const routes =[
     },{
         path:'/Publish',
         component:Publish
-    }
-]
+    },{
+        path: '/Reg',
+        component: Reg
+      },{
+        path: '/Login',
+        component: Login
+      },{
+        path: '/More',
+        component: More
+      }]
+
