@@ -10,6 +10,8 @@ const sendSms = require("./logreg/sendSms")
 const loginSms = require("./logreg/loginSms")
 const reg = require('./logreg/reg')
 const changeName = require('./logreg/changeName')
+const moment = require('./Moment/index')
+
 router.use(express.urlencoded({
     extended:false
 }),express.json())
@@ -31,4 +33,5 @@ router.use("/sendsms",sendSms)
 router.use("/loginsms",loginSms)
 router.use("/reg",reg)
 router.use("/changeName",changeName)
+router.use('/Moment',moment)
 module.exports = router

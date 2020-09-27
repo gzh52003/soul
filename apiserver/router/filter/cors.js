@@ -2,7 +2,7 @@ const allow_origin = ['http://localhost:8080', 'http://localhost:3000', 'http://
 
 function cors(req, res, next) {
     const origin = req.get('Origin');
-    console.log('origin',origin);
+    console.log(origin);
     if (allow_origin.includes(origin)) {
         res.set({
             // "Access-Control-Allow-Origin": "*",

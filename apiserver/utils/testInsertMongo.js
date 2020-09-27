@@ -6,11 +6,7 @@ const {md5} = require("./secret");
 //     for(let i = 1;i <= 10 ; i++){
 //         await insert("userList",{
 //             phoneNum : i+"",
-//             password : md5(123456)+"",
-//             userName : "dandan"+i,
-//             planet : "",
 //             avatorImgUrl : "",
-//             bgImgUrl : "",
 //             birthday : "880992000000",
 //             creTime : Date.now()+"",
 //             gender : "unkonw",
@@ -36,16 +32,16 @@ async function testInsertinstantsList(){
             ],
             context : "公司准备裁员了,我悄悄包了500快红包给我们主管。就在我感觉高枕无忧，前途一片光明的时候，我们主管被裁了......",
             imgUrl : [
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg1.jpg",
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg2.jpg",
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg3.jpg",
-                "http://175.24.126.30:10000/assets/instantsImg/testImg/instantsImg4.jpg"
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg1.jpg",
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg2.jpg",
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg3.jpg",
+                "http://localhost:10000/assets/instantsImg/testImg/instantsImg4.jpg"
             ],
             location : "广州市",
             thumbs : [
-                "5f6ac4bc8725e53ff4b47588",
-                "5f6ac4bc8725e53ff4b47589",
-                "5f6ac4bc8725e53ff4b4758a"
+                "5f6c5c4d4db5d900c0ba5b52",
+                "5f6c5c4d4db5d900c0ba5b53",
+                "5f6c5c4d4db5d900c0ba5b54"
             ],
             comments : [
             ]
