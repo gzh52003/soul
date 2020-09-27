@@ -52,7 +52,7 @@ class App extends React.Component {
     const {location} = this.props
     console.log('props',location.pathname)
     
-    if(location.pathname!=='/Login'){
+    if(location.pathname!=='/login' && location.pathname!=='/reg'){
       return (
       <>
      

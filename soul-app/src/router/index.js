@@ -7,7 +7,10 @@ const More = lazy(() => import('~/More'))
 const Login = lazy(() => import('~/Login'))
 const Square = lazy(() => import('~/Square/index.js'))
 const Search = lazy(() => import('~/Square/search.js'))
+const Reg = lazy(() => import('~/Reg'))
+
 import { Redirect } from 'react-router-dom'
+
 export const routes = [
   {
     path: '/',
@@ -45,5 +48,10 @@ export const routes = [
   {
     path: '/Search',
     component: Search
-  }
+  },
+  {
+    path: '/Reg',
+    component: Reg
+  },
+  
 ]
