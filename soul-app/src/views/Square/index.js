@@ -2,7 +2,6 @@ import React,{useState, useCallback, useEffect} from 'react'
 import HeaderNav from '#/HeaderNav'
 import '../../static/css/Square.scss'
 import {SearchBar,Icon,Popover,NavBar} from 'antd-mobile'
-import $ from 'jquery'
 import '../../static/css/common.scss'
 import request from '../../utils/request'
 import formatTime from '../../utils/formatTime'
@@ -34,7 +33,6 @@ export default function Square(props){
     ( async function getData(){
       const result = await request.get('/Moment');
       addData(dataList = result.data)
-      console.log(dataList);
      })()
    },[])
    const onSelect = useCallback((opt)=>{
@@ -46,6 +44,12 @@ export default function Square(props){
    const Ellipisis = useCallback(()=>{
      console.log(1);
    },[])
+   const goto = useCallback((id)=>{
+      props.history.push(`/Detail/${id}`)
+   },[])
+   const thumbs = useCallback((_id)=>{
+    console.log(_id);
+   })
     return(
         <>
           <HeaderNav title={title} tab={tabs}/> 
@@ -73,7 +77,7 @@ export default function Square(props){
                           (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">发现</Item>),
                           (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>加微信鸭</Item>),
                           (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                            <span style={{ marginRight: 5 }}>向他询问</span>
+                            <span style={{ marginRight: 5 }}>私聊</span>
                           </Item>),
                         ]}
                         align={{
@@ -96,12 +100,14 @@ export default function Square(props){
                       </Popover>
                     </div>
                 </div>
-                <div className='Moment-Content '>
-                       <div><img src={item.imgUrl[0]}></img></div> 
+                <div className='Moment-Content ' onClick={()=>{goto(item._id)}}>
+                       <div><img src='http://localhost:10000/assets/instantsImg/testImg/宝可梦.jpg'></img></div> 
+                       <p className='content'>{item.context}</p>
                        <div className='location'><img src={item.location}></img>广州市</div>
                        <div className='option'>
                        <img src='./assets/img/分享.svg'></img>
-                       <img src='./assets/img/爱心.svg' className='LikeIcon'></img>
+                       {item.thumbs.length===0?<img src='./assets/img/爱心.svg' className='LikeIcon' ></img>:<img src='./assets/img/heart_red.svg' className='LikeIcon' ></img>}
+                       
                        <span className='Like'>{item.thumbs.length}</span>
                        <img src='./assets/img/评论.svg' className='commentIcon'></img>
                        <span className='comment'>{item.comments.length} </span>

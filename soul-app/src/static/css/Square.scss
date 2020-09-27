@@ -2,11 +2,13 @@
     @return $px/1080 * 100 * 1vw; //100px为根字体大小
 }
 .Square-wrap{
+   
     .am-tabs-default-bar-content{
         width: 12.5rem;
     }
 }
 .Moment{
+    background: #fff;
     list-style: none;
     padding:vw(32);
     .MomentList{
@@ -26,6 +28,12 @@
             .describe{
                 float: left;
                 margin-left: vw(18);
+                .owner{
+                    font-size: vw(38);
+                    color:#2fcdd0;
+                    display: block;
+                    padding-top: vw(26);
+                }
                 .from{
                     font-size: vw(38);
                     color:#898989;
@@ -41,11 +49,26 @@
             }
             .share{
                 float: right;
+                padding-top: vw(40);
+                .talk{
+                    background: #2fcdd0;
+                    width: vw(150);
+                    height: vw(70);
+                    line-height: vw(70);
+                    text-align: center;
+                    color:#fff;
+                    font-size: vw(36);
+                    border-radius: vw(30);
+                }
             }
         }
         .Moment-Content{
             padding-left: vw(155);
             padding-top: vw(36);
+            .content{
+                text-indent: vw(30);
+                line-height: vw(100);
+            }
             img{
                 width:vw(660);
                 height: vw(500);
@@ -70,7 +93,7 @@
                     margin-left: vw(460);
                 }
                 .Like,.comment{
-                    font-size: vw(32);
+                    font-size: vw(40);
                     color:#bbbbbb
                 }
                 .commentIcon{

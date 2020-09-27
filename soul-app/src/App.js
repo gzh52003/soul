@@ -23,6 +23,12 @@ class App extends React.Component {
       active:'./assets/img/广场_active.svg',
       path:'/Square'
     },{
+      name:'publish',
+      title:'发布',
+      icon:'./assets/img/发布.svg',
+      active:'./assets/img/发布.svg',
+      path:'/Publish'
+    },{
       name:'chat',
       title:'聊天',
       icon:'./assets/img/聊天.svg',
@@ -57,9 +63,10 @@ class App extends React.Component {
   render() {
     const {TabBarList,show} = this.state
     const {location} = this.props
-    console.log('props',location.pathname)
-    
-    if(location.pathname!=='/Login'){
+    const hideTabBar = ['/Login','/Search','/Publish']
+    // const reg = /^\/Detail/
+    // console.log(location.pathname,reg.test(location.pathname));
+    if(!hideTabBar.includes(location.pathname)){
       return (
       <>
       <div style={this.state.fullScreen ? { position: 'fixed', width: '100%', bottom: 0 } : { height: "100%" }}>

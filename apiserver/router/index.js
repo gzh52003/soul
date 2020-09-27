@@ -9,7 +9,7 @@ const regSms = require("./logreg/regSms")
 const sendSms = require("./logreg/sendSms")
 const loginSms = require("./logreg/loginSms")
 const moment = require('./Moment/index')
-
+const upload = require('./upload/upload')
 router.use(express.urlencoded({
     extended:false
 }),express.json())
@@ -30,4 +30,5 @@ router.use("/loginpass",loginPass)
 router.use("/sendsms",sendSms)
 router.use("/loginsms",loginSms)
 router.use('/Moment',moment)
+router.use('/upload',upload)
 module.exports = router
