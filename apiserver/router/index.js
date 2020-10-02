@@ -10,6 +10,7 @@ const sendSms = require("./logreg/sendSms")
 const loginSms = require("./logreg/loginSms")
 //planet
 const getPlanetInfo = require('./getPlanet/getPlanetInfo')
+const moment = require('./Moment/index')
 
 router.use(express.urlencoded({
     extended:false
@@ -35,4 +36,5 @@ router.use("/loginsms",loginSms)
 //planet
 router.use("/getplanetinfo",getPlanetInfo)
 
+router.use('/Moment',moment)
 module.exports = router

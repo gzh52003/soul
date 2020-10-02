@@ -60,6 +60,7 @@ async function find(colName, query, options) {
         })
     } else {
         result = collection.find(query, opt);
+        console.log('result',result);
     }
     if (options.sort) {
         let sort = options.sort;
@@ -84,6 +85,7 @@ async function find(colName, query, options) {
     if (options.pagesize) {
         result = result.limit(options.pagesize);
     }
+   ;
     result = await result.toArray();
     client.close();
     return result;
