@@ -10,8 +10,10 @@ const sendSms = require("./logreg/sendSms")
 const loginSms = require("./logreg/loginSms")
 //planet
 const getPlanetInfo = require('./getPlanet/getPlanetInfo')
+const reg = require('./logreg/reg')
+const changeName = require('./logreg/changeName')
 const moment = require('./Moment/index')
-
+const upload = require('./upload/upload')
 router.use(express.urlencoded({
     extended:false
 }),express.json())
@@ -36,5 +38,8 @@ router.use("/loginsms",loginSms)
 //planet
 router.use("/getplanetinfo",getPlanetInfo)
 
+router.use("/reg",reg)
+router.use("/changeName",changeName)
 router.use('/Moment',moment)
+router.use('/upload',upload)
 module.exports = router

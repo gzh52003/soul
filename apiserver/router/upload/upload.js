@@ -3,8 +3,8 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-const mongo = require('../utils/mongo');
-const { formatData, md5 } = require('../utils/tools')
+const mongo = require('../../utils/mongo');
+const { Enum } = require('../../utils/Enum')
 
 
 // 配置上传参数
@@ -20,9 +20,9 @@ let storage = multer.diskStorage({
     // avatar-1597202347355.jpg
     filename: function (req, file, cb) {
         // 获取文件后缀名
-        let ext = path.extname(file.originalname);
-
-        cb(null, file.fieldname + '-' + Date.now() + ext);
+        let ext = path.extname(file.name);
+        console.log(file);
+        cb(null, file.name + '-' + Date.now() + ext);
     }
 })
 
@@ -33,14 +33,13 @@ const uploadMiddleware = multer({ storage });
 // post /api/upload/avatar
 router.post('/avatar', uploadMiddleware.single('avatar'), (req, res) => {
     // 中间件会把图片信息格式化到req.file,req.files
-    console.log('file=', req.file, req.body);
+    console.log('file=', req.files, req.body);
     const { _id } = req.body;
-
     // 更新用户信息
-    const avatarUrl = '/uploads/' + req.file.filename
-    mongo.update('user', { _id }, { $set: { avatarUrl } })
+    const avatarUrl = '/uploads/' + req.file.name
+    mongo.updateById('instantsList', { _id }, { $set: { avatarUrl } })
 
-    res.send(formatData({ data: { _id, avatarUrl } }));
+    res.send(Enum(1001,[],'上传成功'));
 })
 
 // 一次性最多传5张图片
