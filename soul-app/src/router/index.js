@@ -1,12 +1,13 @@
 import Home from '~/Home/index.js'
+import Login from '~/Login'
 import React from 'react'
 import { lazy } from 'react'
 const Mine = lazy(() => import('~/Mine'))
 const Chat = lazy(() => import('~/Chat/index.js'))
 const More = lazy(() => import('~/More'))
-const Login = lazy(() => import('~/Login'))
 const Square = lazy(() => import('~/Square/index.js'))
 const Search = lazy(() => import('~/Square/search.js'))
+const Detail = lazy(()=> import('~/Square/details.js'))
 const Publish = lazy(()=>import('~/Publish/publish.js'))
 const Reg = lazy(() => import('~/Reg'))
 import { Redirect } from 'react-router-dom'
@@ -15,7 +16,7 @@ export const routes =[
         path:'/',
         exact:true,
         render:()=>(
-            <Redirect to='/Square'></Redirect>
+            <Redirect to='/Login'></Redirect>
         )
     },
     {
